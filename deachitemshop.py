@@ -84,7 +84,7 @@ def createItemShop():
 if __name__ == '__main__':
     createItemShop()
 
-    TOKEN = ''
+    TOKEN = os.environ['TOKEN']
     bot = commands.Bot(command_prefix='!')
 
     @bot.command()
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     @tasks.loop(seconds=10800)
     async def change_status():
         createItemShop()
-        channel = bot.get_channel(638652839689846795)
+        channel = bot.get_channel(os.environ['channel'])
         print('sended!')
         await channel.send('Магазин на: ' + d2 + ' ✨')
         x = await channel.send('Используй тег автора **DeachOpOp** при покупке товаров в магазине предметов! 🥰',
